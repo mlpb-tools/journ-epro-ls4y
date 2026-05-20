@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Skills for Youth - Guide Préparatoire Détaillé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --red: #C2183B;       /* Rouge cerise profond */
+            --yellow: #FFC300;    /* Jaune vif chaleureux */
+            --turquoise: #00B4D8; /* Turquoise lumineux */
+            --mint: #A3E4D7;      /* Menthe */
+            --text-dark: #1a1a1a;
+            --text-light: #4a4a4a;
+            --bg-page: #ffffff;
+            --bg-body: #f0f4f8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* --- MAGAZINE PAGE LAYOUT (A4 Proportions) --- */
+        .magazine-page {
+            background-color: var(--bg-page);
+            width: 100%;
+            max-width: 900px;
+            min-height: 1272px; /* Approx A4 ratio */
+            padding: 80px 70px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4, h5 {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: var(--red);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: var(--turquoise);
+            margin-top: 40px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--mint);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: var(--red);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            position: relative;
+            list-style-type: none;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--turquoise);
+            font-size: 24px;
+            position: absolute;
+            left: -20px;
+            top: -6px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* --- DECORATIVE ELEMENTS (Vectors, puzzles, floating shapes) --- */
+        .frieze {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            display: flex;
+        }
+        .frieze > div { flex: 1; }
+        .bg-red { background-color: var(--red); }
+        .bg-yellow { background-color: var(--yellow); }
+        .bg-turquoise { background-color: var(--turquoise); }
+        .bg-mint { background-color: var(--mint); }
+
+        .floating-dot {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .floating-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 4px solid;
+            z-index: 0;
+            box-sizing: border-box;
+        }
+
+        /* Puzzle Shape SVG Backgrounds */
+        .puzzle-bg {
+            position: absolute;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .content-layer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- IMAGES --- */
+        .image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .img-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .img-circle.large {
+            width: 350px;
+            height: 350px;
+        }
+
+        .img-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* --- CONTENT COMPONENTS (Boxes, Tables) --- */
+        .intro-block {
+            background-color: #fafcff;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 6px solid var(--yellow);
+            margin-bottom: 30px;
+        }
+
+        .objective-box {
+            background-color: rgba(163, 228, 215, 0.2); /* Mint clair */
+            border: 2px solid var(--mint);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .objective-box h4 {
+            color: var(--turquoise);
+            margin-top: 0;
+        }
+
+        .effect-box {
+            background-color: rgba(255, 195, 0, 0.1); /* Jaune clair */
+            border-left: 5px solid var(--yellow);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
+        }
+        
+        .effect-box h4 {
+            color: var(--red);
+            margin-top: 0;
+        }
+
+        .sequence-header {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Tables Magazine Style */
+        .mag-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+        }
+
+        .mag-table th {
+            background-color: var(--turquoise);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .mag-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            color: var(--text-light);
+            vertical-align: top;
+        }
+
+        .mag-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .mag-table tr:nth-child(even) td {
+            background-color: #fcfcfc;
+        }
+        
+        .mag-table.table-red th { background-color: var(--red); }
+        .mag-table.table-yellow th { background-color: var(--yellow); color: var(--text-dark); }
+
+        /* Two columns */
+        .col-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .rubrique-title {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--turquoise);
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SVG Puzzle Definitions -->
+    <svg style="display: none;">
+        <defs>
+            <g id="puzzle-piece">
+                <path d="M75 0 C75 -20 105 -20 105 0 L150 0 L150 45 C170 45 170 75 150 75 L150 150 L75 150 C75 170 45 170 45 150 L0 150 L0 75 C-20 75 -20 45 0 45 L0 0 Z" />
+            </g>
+        </defs>
+    </svg>
+
+    <!-- ================= PAGE 1 : Couverture & Intro ================= -->
+    <div class="magazine-page">
+        <!-- Deco -->
+        <svg class="puzzle-bg" style="top: -50px; right: -50px; width: 300px; height: 300px; fill: var(--yellow); transform: rotate(15deg);">
+            <use href="#puzzle-piece"></use>
+        </svg>
+        <div class="floating-dot bg-turquoise" style="width: 30px; height: 30px; top: 150px; left: 60px;"></div>
+        <div class="floating-ring" style="width: 50px; height: 50px; border-color: var(--mint); top: 350px; right: 80px;"></div>
+
+        <div class="content-layer">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); font-weight: 600; margin-bottom: 10px;">Programme pédagogique détaillé – version actualisée</p>
+                <h1>Journée professionnelle LS4YOU</h1>
+                <p style="font-size: 20px; color: var(--text-dark); font-family: 'Fredoka', sans-serif; margin-bottom: 25px;">Life Skills, auto-évaluation et diagnostic partagé en Mission Locale</p>
+                
+                <div style="display: inline-block; background: #fff; padding: 15px 30px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <p style="margin: 0; font-weight: 600; color: var(--red);"><i class="fa-regular fa-calendar"></i> Lundi 15 juin 2026 – 10h00 à 16h00</p>
+                    <p style="margin: 0; font-weight: 500; color: var(--text-dark);"><i class="fa-solid fa-location-dot"></i> Bar associatif Auzteia – Pagolle</p>
+        </div>
+    </div>
+
+    <h2>1. Intention générale de la journée</h2>
+    <div class="intro-block">
+        <p>Dans le cadre de la clôture du projet européen <strong>LS4YOU – Life Skills for Youth</strong>, la Mission Locale Pays Basque organise une journée professionnelle de dissémination et d’échange de pratiques associant :</p>
+        <ul>
+                    <li>des professionnels de la Mission Locale Pays Basque ;</li>
+                    <li>des professionnels de la Mission Locale TM2O ;</li>
+                    <li>Pistes Solidaires, partenaire européen historique de la MLPB ;</li>
+                    <li>Jérémy Authier, mobilisé pour accompagner la mise en réflexion des pratiques et contribuer à la structuration des enseignements de la journée.</li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: 600; color: var(--text-dark);">Cette journée poursuit une double finalité :</p>
+        <ul>
+            <li>Valoriser les apports du projet LS4YOU et la manière dont la MLPB s’en est saisie dans une déclinaison opérationnelle ;</li>
+            <li>Ouvrir une réflexion métier sur la manière dont les Life Skills, l’auto-évaluation et la reconnaissance des ressources du jeune peuvent nourrir la réflexion autour d’un diagnostic partagé Mission Locale, en cohérence avec l’accompagnement global.</li>
+        </ul>
+    </div>
+
+    <h2 style="color: var(--red);">2. Fil rouge de la journée</h2>
+    <p style="font-size: 18px; font-weight: 500; text-align: center; color: var(--text-dark); max-width: 700px; margin: 0 auto 30px;">
+                À partir des apports de LS4YOU, comment enrichir les pratiques d’accompagnement en Mission Locale en donnant davantage de place aux <span style="color: var(--turquoise);">ressources du jeune</span>, à son <span style="color: var(--yellow);">auto-évaluation</span> et à la co-construction d’un <span style="color: var(--red);">diagnostic partagé</span> ?
+            </p>
+            
+            <p>La journée articule trois niveaux de travail :</p>
+            <table class="mag-table table-yellow">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Niveau</th>
+                        <th>Enjeu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Comprendre</strong></td>
+                        <td>Situer le projet LS4YOU, ses productions et ses apports au regard de l’accompagnement des jeunes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Observer et analyser</strong></td>
+                        <td>Découvrir une déclinaison opérationnelle construite par la MLPB et en tirer des enseignements professionnels.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ouvrir une perspective métier</strong></td>
+                        <td>Mettre en discussion la contribution possible des Life Skills à un diagnostic partagé Mission Locale, inscrit dans les fondamentaux de l’accompagnement.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="frieze">
+            <div class="bg-red"></div><div class="bg-yellow"></div><div class="bg-turquoise"></div><div class="bg-mint"></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2 : Progression & Séquence 1 ================= -->
+    <div class="magazine-page">
+        <div class="floating-dot bg-yellow" style="width: 20px; height: 20px; top: 100px; right: 50px;"></div>
+        <div class="floating-ring" style="width: 60px; height: 60px; border-color: var(--red); bottom: 200px; left: 40px; border-width: 6px;"></div>
+
+        <div class="content-layer">
+            <h2>3. Progression pédagogique de la journée</h2>
+            <table class="mag-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Temps</th>
+                        <th>Fonction dans la journée</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">10h00 – 10h40</td>
+                        <td><strong>Poser le cadre :</strong> inscrire la journée dans les fondamentaux du réseau et dans le projet européen LS4YOU.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">10h40 – 12h15</td>
+                        <td><strong>Mettre en réflexion :</strong> ouvrir l’échange de pratiques autour des Life Skills, des compétences invisibles et de l’accompagnement global.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">13h30 – 14h20</td>
+                        <td><strong>Passer par un objet concret :</strong> présenter l’atelier MLPB comme déclinaison opérationnelle de LS4YOU.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">14h20 – 15h20</td>
+                        <td><strong>Produire une analyse collective :</strong> identifier ce que cet atelier fait émerger et ce qu’il met en discussion.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">15h20 – 16h00</td>
+                        <td><strong>Ouvrir une perspective métier :</strong> relier Life Skills, posture professionnelle et diagnostic partagé Mission Locale.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 style="color: var(--red);">4. Déroulé pédagogique détaillé</h2>
+
+            <div class="sequence-header bg-turquoise">Séquence 1 — Accueil, ouverture institutionnelle et cadrage de la journée</div>
+            <h3>10h00 – 10h20</h3>
+            <p><strong>Animation :</strong> Direction MLPB / Mission Locale Pays Basque</p>
+
+            <div class="objective-box">
+                <h4><i class="fa-solid fa-bullseye"></i> Objectif général</h4>
+                <p style="margin-bottom: 0;">Accueillir les participants, donner immédiatement le sens de la journée et la situer dans un cadre plus large : celui des fondamentaux de l’accompagnement en Mission Locale, récemment réaffirmés au niveau national, et celui du projet LS4YOU.</p>
+                <p style="margin-bottom: 0; margin-top: 10px;">Le document national rappelle notamment que l’accompagnement en Mission Locale repose sur l’approche globale, la reconnaissance des jeunes comme acteurs de leur parcours, la personnalisation de la relation, le tenir conseil, la reconnaissance mutuelle et l’adaptabilité. La journée s’inscrit directement dans cette logique en interrogeant la place des ressources, de l’auto-évaluation et du diagnostic partagé.</p>
+            </div>
+
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Accueillir les participants et installer un cadre de travail clair.</li>
+                <li>Situer la journée au croisement : 
+                    <ul>
+                        <li>des engagements du projet LS4YOU ;</li>
+                        <li>des enjeux de qualité de l’accompagnement en Mission Locale ;</li>
+                        <li>des fondamentaux nationaux du réseau.</li>
+                    </ul>
+                </li>
+                <li>Donner une lecture institutionnelle simple de l’ambition de la journée.</li>
+                <li>Présenter le fil rouge et la progression pédagogique.</li>
+            </ul>
+
+            <h4 style="color: var(--turquoise); border-bottom: 1px solid #eee; padding-bottom: 5px;">Déroulé proposé</h4>
+            
+            <p class="rubrique-title">1.1. Accueil et ouverture de la journée</p>
+            <p><strong>10h00 – 10h05</strong></p>
+            <p><strong>Contenus :</strong></p>
+            <ul>
+                <li>Mot de bienvenue.</li>
+                <li>Présentation rapide du cadre de la rencontre : 
+                    <ul>
+                        <li>journée professionnelle ;</li>
+                        <li>temps de dissémination du projet LS4YOU ;</li>
+                        <li>participation croisée MLPB / TM2O / Pistes Solidaires / Jérémy Authier.</li>
+                    </ul>
+                </li>
+                <li>Mention du lieu : bar associatif Auzteia, cohérent avec une journée ouverte, territoriale et conviviale.</li>
+            </ul>
+
+            <p class="rubrique-title">1.2. Mise en perspective par la direction : LS4YOU au regard des fondamentaux de l’accompagnement</p>
+            <p><strong>10h05 – 10h15</strong></p>
+            <p><strong>Intention :</strong> Montrer que la journée ne se réduit pas à la présentation d’un projet européen, mais qu’elle vient éclairer une question pleinement ancrée dans l’identité métier des Missions Locales.</p>
+            
+            <div style="padding-left: 20px; border-left: 3px solid var(--mint); margin-top: 15px;">
+                <p><strong>Rubrique A — L’accompagnement global comme point d’ancrage</strong><br>
+                Le document national définit l’approche globale comme le fondement de l’action Mission Locale : appréhender les dimensions professionnelles, personnelles et sociales de la situation du jeune, au-delà d’une lecture strictement centrée sur l’emploi ou les dispositifs.<br>
+                <em>Lien avec la journée :</em><br>
+                Le travail engagé autour de LS4YOU rejoint cette approche.<br>
+                Il vise à prendre en compte non seulement les freins et les besoins, mais aussi :
+                <ul>
+                    <li>les ressources ;</li>
+                    <li>les compétences de vie ;</li>
+                    <li>les expériences ;</li>
+                    <li>les capacités d’action.</li>
+                </ul>
+                </p>
+
+                <p><strong>Rubrique B — Les jeunes acteurs de leur parcours</strong><br>
+                Le document national rappelle que les jeunes doivent pouvoir s’approprier leurs besoins, leurs questionnements, les outils et les savoirs proposés, afin de définir les étapes de leur parcours.<br>
+                <em>Lien avec la journée :</em><br>
+                L’auto-évaluation s’inscrit dans cette logique.<br>
+                Elle vient interroger la manière dont le jeune peut participer à la lecture de sa propre situation.<br>
+                Elle permet de réfléchir à un diagnostic davantage partagé, et pas uniquement posé par le professionnel.
+                </p>
+
+                <p><strong>Rubrique C — Personnalisation de la relation et « tenir conseil »</strong><br>
+                Le livret national souligne :<br>
+                - l’importance d’un diagnostic établi avec les jeunes et non exclusivement fléché vers l’emploi ;<br>
+                - le « tenir conseil » comme un espace de délibération pour agir, fondé sur une relation d’accompagnement horizontale.<br>
+                <em>Lien avec la journée :</em><br>
+                Les Life Skills peuvent nourrir cette capacité à « tenir conseil » :
+                <ul>
+                    <li>en facilitant la mise en mots ;</li>
+                    <li>en rendant visibles des ressources peu formalisées ;</li>
+                    <li>en ouvrant un espace de dialogue autour de la prochaine étape du parcours.</li>
+                </ul>
+                </p>
+
+                <p><strong>Rubrique D — Pourquoi ouvrir cette réflexion aujourd’hui ?</strong><br>
+                La conclusion méthodologique du document national invite à réinterroger régulièrement les pratiques et à les mettre en discussion avec les valeurs du réseau, dans une logique d’amélioration continue.<br>
+                <em>Lien avec la journée :</em><br>
+                C’est précisément l’objet de cette rencontre :
+                <ul>
+                    <li>partir d’un projet européen ;</li>
+                    <li>examiner ce qu’il éclaire dans l’accompagnement ;</li>
+                    <li>produire une réflexion professionnelle partagée.</li>
+                </ul>
+                </p>
+            </div>
+
+            <p class="rubrique-title">1.3. Présentation du fil rouge et du déroulé</p>
+            <p><strong>10h15 – 10h20</strong></p>
+            <p><strong>Contenus :</strong></p>
+            <ul>
+                <li>Présentation de la question centrale de la journée.</li>
+                <li>Annonce des trois mouvements : 
+                    <ul>
+                        <li>comprendre LS4YOU ;</li>
+                        <li>analyser une déclinaison MLPB ;</li>
+                        <li>ouvrir une perspective autour du diagnostic partagé.</li>
+                    </ul>
+                </li>
+                <li>Clarification du positionnement : 
+                    <ul>
+                        <li>pas de modèle imposé ;</li>
+                        <li>pas d’outil finalisé à valider ;</li>
+                        <li>une journée d’échange, d’analyse et de production de premiers repères.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">À l’issue de cette première séquence, les participants doivent comprendre que :</p>
+                <ul>
+                    <li>la journée a un cadre clair ;</li>
+                    <li>LS4YOU est abordé comme une ressource de réflexion ;</li>
+                    <li>les échanges s’inscrivent dans les fondamentaux de l’accompagnement Mission Locale ;</li>
+                    <li>leur participation sera nécessaire pour nourrir la réflexion.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="frieze">
+            <div class="bg-turquoise"></div><div class="bg-red"></div><div class="bg-mint"></div><div class="bg-yellow"></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 3 : Séquence 2 & 3 ================= -->
+    <div class="magazine-page">
+        <svg class="puzzle-bg" style="top: 40%; left: -60px; width: 250px; height: 250px; fill: var(--turquoise); transform: rotate(-25deg);">
+            <use href="#puzzle-piece"></use>
+        </svg>
+
+        <div class="content-layer">
+            <div class="sequence-header bg-yellow" style="color: var(--text-dark);">Séquence 2 — LS4YOU : cadre européen, partenariat et dissémination</div>
+            <h3>10h20 – 10h40</h3>
+            <p><strong>Animation :</strong> Soha / Pistes Solidaires</p>
+
+            <div class="col-2">
+                <div>
+                    <div class="objective-box" style="margin-top: 0;">
+                        <h4>Objectif général</h4>
+                        <p style="margin-bottom:0;">Resituer le projet LS4YOU dans son origine européenne, expliciter les objectifs de la coopération partenariale et introduire les productions qui serviront de point d’appui à la journée.</p>
+                    </div>
+                    <h4>Objectifs opérationnels</h4>
+                    <ul>
+                        <li>Présenter la genèse du projet.</li>
+                        <li>Rappeler son inscription dans le programme Erasmus+ KA2.</li>
+                        <li>Expliquer les objectifs généraux de LS4YOU.</li>
+                        <li>Valoriser le rôle de Pistes Solidaires dans l’entrée de la MLPB dans ce projet.</li>
+                        <li>Présenter synthétiquement les productions principales.</li>
+                        <li>Introduire la logique de dissémination et de transfert vers les pratiques professionnelles.</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper">
+                    <div class="img-bg-circle bg-yellow" style="width: 270px; height: 270px; top: 10px; right: 20px;"></div>
+                    <img class="img-circle" src="http://global-leadership.com/wp-content/uploads/2026/04/Salamat-289x300.png" alt="Partenariat européen">
+                </div>
+            </div>
+
+            <h4 style="color: var(--turquoise); border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 30px;">Déroulé proposé</h4>
+            
+            <p class="rubrique-title">2.1. Genèse du projet LS4YOU</p>
+            <p>Constats de départ à l’échelle européenne :</p>
+            <ul>
+                <li>parcours jeunes fragilisés ;</li>
+                <li>nécessité de développer des outils autour de la connaissance de soi, de la valorisation et de l’autonomie ;</li>
+                <li>importance des compétences de vie dans les parcours d’insertion.</li>
+            </ul>
+
+            <p class="rubrique-title">2.2. Objectifs généraux du projet</p>
+            <ul>
+                <li>Outiller les professionnels.</li>
+                <li>Proposer des approches favorisant :
+                    <ul>
+                        <li>l’identification des ressources ;</li>
+                        <li>l’auto-évaluation ;</li>
+                        <li>la valorisation des compétences ;</li>
+                        <li>la projection du jeune.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="rubrique-title">2.3. Le partenariat européen et la place de Pistes Solidaires</p>
+            <ul>
+                <li>Présentation synthétique du partenariat.</li>
+                <li>Rôle de Pistes Solidaires :
+                    <ul>
+                        <li>partenaire européen de longue date de la MLPB ;</li>
+                        <li>structure ayant embarqué la MLPB dans ce projet ;</li>
+                        <li>rôle dans la diffusion et la valorisation des productions.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="rubrique-title">2.4. Les principales productions LS4YOU</p>
+            <ul>
+                <li>Guide pédagogique.</li>
+                <li>Fiches d’activités.</li>
+                <li>Plateforme numérique.</li>
+                <li>Quatre axes structurants :
+                    <ul>
+                        <li>personnalité ;</li>
+                        <li>valorisation / auto-promotion ;</li>
+                        <li>bien-être physique et mental ;</li>
+                        <li>ressources matérielles et financières.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="rubrique-title">2.5. La dissémination : pourquoi cette journée ?</p>
+            <ul>
+                <li>Faire connaître les productions.</li>
+                <li>Les mettre en discussion dans un contexte professionnel Mission Locale.</li>
+                <li>Interroger leurs apports possibles dans une logique de transfert, d’adaptation et de capitalisation.</li>
+            </ul>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">À l’issue de cette séquence, les participants disposent :</p>
+                <ul>
+                    <li>d’un cadre commun sur le projet LS4YOU ;</li>
+                    <li>d’une lecture claire du rôle des partenaires ;</li>
+                    <li>d’une compréhension des ressources sur lesquelles la journée va s’appuyer.</li>
+                </ul>
+            </div>
+
+            <!-- Séquence 3 -->
+            <div class="sequence-header bg-red" style="margin-top: 40px;">Séquence 3 — Échange de pratiques : Life Skills, compétences invisibles et accompagnement global</div>
+            <h3>10h40 – 12h15</h3>
+            <p><strong>Animation :</strong> Jérémy Authier</p>
+
+            <div class="objective-box">
+                <h4><i class="fa-solid fa-users"></i> Objectif général</h4>
+                <p style="margin-bottom:0;">Ouvrir un échange de pratiques structuré sur les enjeux professionnels soulevés par les Life Skills : place des ressources, reconnaissance des compétences invisibles, auto-évaluation, articulation avec l’accompagnement global et posture du professionnel.</p>
+            </div>
+            
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Mettre en discussion les évolutions des parcours des jeunes.</li>
+                <li>Définir collectivement ce que l’on entend par compétences invisibles.</li>
+                <li>Interroger la place des ressources dans l’analyse de la situation du jeune.</li>
+                <li>Poser la question de l’auto-évaluation comme support de dialogue.</li>
+                <li>Faire émerger les premières tensions ou pistes de réflexion qui nourriront l’après-midi.</li>
+                <li>Préparer le passage vers la présentation de la déclinaison MLPB.</li>
+            </ul>
+
+            <h4>Progression pédagogique de la séquence</h4>
+            
+            <p class="rubrique-title">3.1. Point de départ : les parcours des jeunes et leur complexité</p>
+            <p><strong>Intention :</strong> partir du réel professionnel.</p>
+            <p>Rubriques possibles :</p>
+            <ul>
+                <li>parcours non linéaires ;</li>
+                <li>ruptures, transitions, reprises ;</li>
+                <li>poids des contraintes sociales, familiales, économiques ;</li>
+                <li>richesse d’expériences informelles souvent peu reconnues ;</li>
+                <li>difficulté à qualifier certaines ressources ou capacités d’action.</li>
+            </ul>
+            <p><em>Question d’ouverture possible : Dans les parcours accompagnés aujourd’hui, qu’est-ce qui demeure difficile à rendre visible ou à formaliser ?</em></p>
+
+            <p class="rubrique-title">3.2. Les Life Skills comme grille de lecture complémentaire</p>
+            <p><strong>Intention :</strong> ne pas présenter les Life Skills comme une catégorie abstraite, mais comme des compétences directement observables dans les parcours.</p>
+            <p>Exemples à mettre en discussion :</p>
+            <ul>
+                <li>demander de l’aide ;</li>
+                <li>coopérer ;</li>
+                <li>persévérer ;</li>
+                <li>s’adapter ;</li>
+                <li>identifier ses besoins ;</li>
+                <li>faire face à un imprévu ;</li>
+                <li>prendre une décision ;</li>
+                <li>mettre en mots ce que l’on sait faire.</li>
+            </ul>
+
+            <p class="rubrique-title">3.3. Les compétences invisibles : ce que les outils classiques repèrent moins facilement</p>
+            <p><strong>Intention :</strong> ouvrir une discussion sur ce que certains jeunes mobilisent sans toujours le nommer.</p>
+            <p>Axes d’échange :</p>
+            <ul>
+                <li>compétences développées dans la vie familiale ;</li>
+                <li>expériences associatives ou sportives ;</li>
+                <li>parcours de mobilité ;</li>
+                <li>situations de débrouille, d’adaptation ou de responsabilité ;</li>
+                <li>compétences relationnelles ou organisationnelles peu formalisées.</li>
+            </ul>
+
+        </div>
+
+        <div class="frieze">
+            <div class="bg-yellow"></div><div class="bg-turquoise"></div><div class="bg-red"></div><div class="bg-mint"></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 4 : Séquence 3(fin), 4, 5, 6 ================= -->
+    <div class="magazine-page">
+        <div class="floating-dot bg-mint" style="width: 25px; height: 25px; top: 50px; left: 80px;"></div>
+
+        <div class="content-layer">
+            <p class="rubrique-title">3.4. Freins, besoins, ressources : chercher une lecture plus équilibrée</p>
+            <p><strong>Intention :</strong> articuler l’accompagnement global avec une attention plus structurée aux ressources.</p>
+            <p><em>Question pivot : Comment maintenir l’exigence d’analyse des besoins et des difficultés, tout en prenant davantage appui sur ce qui soutient déjà le jeune dans son parcours ?</em></p>
+            <p>Cette question fait écho au fondamental national de l’approche globale, qui ne saurait se réduire à une logique de traitement segmenté des difficultés.</p>
+
+            <p class="rubrique-title">3.5. L’auto-évaluation comme support de dialogue</p>
+            <p><strong>Intention :</strong> poser les premiers éléments de la réflexion qui culminera dans la séquence finale sur le diagnostic partagé.</p>
+            <p>Points à traiter :</p>
+            <ul>
+                <li>ce que le jeune reconnaît de lui-même ;</li>
+                <li>les écarts entre auto-perception et observation professionnelle ;</li>
+                <li>l’intérêt de supports permettant de verbaliser ;</li>
+                <li>les limites à ne pas franchir :
+                    <ul>
+                        <li>pas de test normatif ;</li>
+                        <li>pas de classement ;</li>
+                        <li>pas d’auto-diagnostic isolé du dialogue.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="rubrique-title">3.6. Posture professionnelle et « tenir conseil »</p>
+            <p><strong>Intention :</strong> relier l’échange à la dimension relationnelle de l’accompagnement.</p>
+            <p>Le document national rappelle que le « tenir conseil » consiste à « délibérer pour agir », dans une relation qui vise à éclairer les choix du jeune sans s’y substituer.</p>
+            <p>Questions possibles :</p>
+            <ul>
+                <li>Comment aider le jeune à relire son parcours sans parler à sa place ?</li>
+                <li>Comment produire une analyse utile sans rigidifier la relation ?</li>
+                <li>Comment maintenir une posture de conseil, de mise en perspective et non de prescription descendante ?</li>
+            </ul>
+
+            <p class="rubrique-title">3.7. Transition vers l’après-midi</p>
+            <p><strong>Intention :</strong> préparer le passage de la réflexion générale à l’observation d’un outil construit localement.</p>
+            <p>Conclusion possible :<br>
+            Les échanges du matin permettent d’identifier plusieurs enjeux : mieux repérer les ressources, donner une place à l’auto-évaluation, soutenir une lecture plus partagée du parcours. L’après-midi permettra d’observer comment ces enjeux ont commencé à être traduits par la MLPB dans un atelier directement inspiré de LS4YOU.</p>
+            
+            <p><strong>Modalités d’animation suggérées :</strong></p>
+            <ul>
+                <li>Apports cadrants de Jérémy Authier.</li>
+                <li>Questions ouvertes à la salle.</li>
+                <li>Recueil d’exemples concrets de pratiques.</li>
+                <li>Reformulations régulières.</li>
+                <li>Mise en évidence de tensions professionnelles plutôt que recherche de réponses définitives.</li>
+            </ul>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">À l’issue de cette séquence, les participants doivent :</p>
+                <ul>
+                    <li>disposer d’un langage commun autour des Life Skills ;</li>
+                    <li>avoir relié ces apports à l’accompagnement global ;</li>
+                    <li>avoir identifié la question de l’auto-évaluation et du diagnostic partagé comme fil structurant de la suite.</li>
+                </ul>
+            </div>
+
+            <!-- Déjeuner -->
+            <div style="background-color: var(--yellow); padding: 20px 30px; border-radius: 12px; margin: 40px 0; display: flex; align-items: center; gap: 20px;">
+                <i class="fa-solid fa-mug-hot" style="font-size: 30px; color: var(--text-dark);"></i>
+                <div>
+                    <h3 style="margin: 0; color: var(--text-dark);">Séquence 4 — Déjeuner sur place</h3>
+                    <p style="margin: 5px 0 0 0; font-weight: bold; color: var(--text-dark);">12h15 – 13h30</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-dark);">Lieu : Bar associatif Auzteia.</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-dark);"><strong>Objectif :</strong> Créer un temps de respiration, de convivialité et d’échanges informels entre professionnels, partenaires et intervenants.</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-dark);"><strong>Fonction dans la journée :</strong> Ce temps soutient : l’interconnaissance entre participants ; la circulation des échanges engagés en matinée ; la qualité relationnelle d’une journée fondée sur le partage de pratiques.</p>
+                </div>
+            </div>
+
+            <!-- Séquence 5 -->
+            <div class="sequence-header bg-turquoise">Séquence 5 — Bascule vers la pratique</div>
+            <h3>13h30 – 13h45</h3>
+            <p><strong>Animation :</strong> MLPB / Jérémy Authier</p>
+            
+            <div class="objective-box">
+                <h4>Objectif général</h4>
+                <p style="margin-bottom:0;">Assurer une transition claire entre la réflexion du matin et l’analyse concrète de l’atelier MLPB présenté l’après-midi.</p>
+            </div>
+
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Réactiver les idées principales de la matinée.</li>
+                <li>Préciser ce qui va être observé dans la présentation de l’atelier.</li>
+                <li>Donner une grille de lecture aux participants.</li>
+                <li>Préparer le travail d’analyse en sous-groupes.</li>
+            </ul>
+
+            <h4>Déroulé proposé</h4>
+            <p class="rubrique-title">5.1. Synthèse courte des enseignements du matin</p>
+            <p>Faire ressortir 3 ou 4 idées :</p>
+            <ul>
+                <li>les Life Skills comme entrée complémentaire dans l’accompagnement ;</li>
+                <li>la reconnaissance des ressources et des compétences invisibles ;</li>
+                <li>l’auto-évaluation comme support de dialogue ;</li>
+                <li>la perspective d’un diagnostic plus partagé.</li>
+            </ul>
+
+            <p class="rubrique-title">5.2. Positionnement de l’atelier MLPB</p>
+            <ul>
+                <li>Il s’agit d’une déclinaison opérationnelle des apports de LS4YOU.</li>
+                <li>Il n’est pas présenté comme un modèle standard à généraliser.</li>
+                <li>Il constitue un support d’analyse professionnelle.</li>
+            </ul>
+
+            <p class="rubrique-title">5.3. Grille d’observation donnée aux participants</p>
+            <p>Pendant la présentation, les participants sont invités à repérer :</p>
+            <ul>
+                <li>ce que l’atelier cherche à faire émerger chez le jeune ;</li>
+                <li>les axes Life Skills qu’il mobilise ;</li>
+                <li>les éléments qui peuvent nourrir l’accompagnement ;</li>
+                <li>les points qui appellent vigilance, adaptation ou discussion.</li>
+            </ul>
+            
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">Les participants entrent dans la présentation de l’atelier avec une posture active d’observation et d’analyse.</p>
+            </div>
+
+            <!-- Séquence 6 -->
+            <div class="sequence-header bg-red" style="margin-top: 30px;">Séquence 6 — Présentation de la déclinaison MLPB de LS4YOU</div>
+            <h3>13h45 – 14h20</h3>
+            <p><strong>Atelier :</strong> « Se connaître et préparer sa prochaine étape »<br><strong>Animation :</strong> Mission Locale Pays Basque</p>
+
+            <div class="objective-box">
+                <h4>Objectif général</h4>
+                <p style="margin-bottom:0;">Montrer comment les productions LS4YOU ont été traduites par la MLPB dans un atelier collectif destiné à accompagner les jeunes dans la connaissance de soi, la valorisation des ressources et la préparation d’une prochaine étape de parcours.</p>
+            </div>
+
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Présenter l’origine de l’atelier.</li>
+                <li>Expliquer sa logique pédagogique.</li>
+                <li>Détailler les étapes qui le composent.</li>
+                <li>Mettre en évidence les liens avec les quatre axes Life Skills.</li>
+                <li>Donner aux participants un matériau concret pour le travail d’analyse.</li>
+            </ul>
+
+            <h4>Déroulé proposé</h4>
+            <p class="rubrique-title">6.1. Origine de l’atelier</p>
+            <ul>
+                <li>Point de départ : appropriation des productions LS4YOU.</li>
+                <li>Volonté de créer une traduction adaptée :
+                    <ul>
+                        <li>au vocabulaire Mission Locale ;</li>
+                        <li>aux besoins des jeunes accompagnés ;</li>
+                        <li>aux formats d’ateliers collectifs ou de remobilisation.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="rubrique-title">6.2. Finalité générale</p>
+            <p>L’atelier vise à permettre au jeune de :</p>
+            <ul>
+                <li>mieux se connaître ;</li>
+                <li>identifier ses forces, ses besoins et ses ressources ;</li>
+                <li>relire certaines expériences ;</li>
+                <li>clarifier ce qui peut le soutenir dans une prochaine étape ;</li>
+                <li>préparer une mise en mouvement réaliste.</li>
+            </ul>
+
+            <p class="rubrique-title">6.3. Architecture pédagogique de l’atelier</p>
+            <table class="mag-table table-red">
+                <thead>
+                    <tr>
+                        <td><strong>4. Valoriser ce qui peut être mobilisé</strong></td>
+                        <td>Mettre des mots sur ce que le jeune sait faire, peut apporter ou a déjà appris.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Préparer la prochaine étape</strong></td>
+                        <td>Relier les éléments travaillés à une action, un projet, un rendez-vous ou une mise en situation à venir.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="rubrique-title">6.4. Liens avec les Life Skills</p>
+            <ul>
+                <li><strong>Personnalité :</strong> valeurs, motivations, connaissance de soi.</li>
+                <li><strong>Valorisation de soi :</strong> mise en mots, présentation, confiance.</li>
+                <li><strong>Bien-être :</strong> besoins, sécurité, disponibilité.</li>
+                <li><strong>Ressources matérielles et financières :</strong> appuis concrets, conditions de faisabilité.</li>
+            </ul>
+            
+            <p class="rubrique-title">6.5. Ce que l’atelier peut faire émerger</p>
+            <ul>
+                <li>un besoin de confiance ;</li>
+                <li>une ressource jusqu’alors peu visible ;</li>
+                <li>une compétence informelle ;</li>
+                <li>une difficulté de projection ;</li>
+                <li>un frein de passage à l’action ;</li>
+                <li>un appui sur lequel construire la suite.</li>
+            </ul>
+
+            <p class="rubrique-title">6.6. Positionnement explicite</p>
+            <ul>
+                <li>L’atelier est présenté comme une déclinaison MLPB.</li>
+                <li>Il vient documenter un travail d’appropriation du projet européen.</li>
+                <li>Il sert de base à la réflexion collective, sans présumer d’une généralisation.</li>
+            </ul>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">Les participants comprennent : la logique de l’atelier ; sa filiation avec LS4YOU ; ce qu’il offre comme matière d’analyse pour interroger les pratiques d’accompagnement et la réflexion sur le diagnostic partagé.</p>
+            </div>
+
+        </div>
+
+        <div class="frieze">
+            <div class="bg-mint"></div><div class="bg-red"></div><div class="bg-yellow"></div><div class="bg-turquoise"></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 5 : Séquence 7 & 8 ================= -->
+    <div class="magazine-page">
+        <svg class="puzzle-bg" style="bottom: 100px; right: -80px; width: 350px; height: 350px; fill: var(--red); transform: rotate(80deg);">
+            <use href="#puzzle-piece"></use>
+        </svg>
+
+        <div class="content-layer">
+            <div class="sequence-header bg-yellow" style="color: var(--text-dark);">Séquence 7 — Analyse en sous-groupes : ce que l’atelier permet de faire émerger</div>
+            <h3>14h20 – 14h55</h3>
+            <p><strong>Animation :</strong> Participants, avec appui MLPB</p>
+
+            <div class="objective-box">
+                <h4>Objectif général</h4>
+                <p style="margin-bottom:0;">Produire une lecture professionnelle collective de l’atelier présenté : ses apports, ses liens avec les Life Skills, les possibilités qu’il ouvre et les vigilances qu’il appelle.</p>
+            </div>
+
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Analyser ce que l’atelier rend visible chez le jeune.</li>
+                <li>Identifier ce qu’il peut apporter à la relation d’accompagnement.</li>
+                <li>Faire le lien avec les Life Skills.</li>
+                <li>Repérer les conditions de pertinence, d’adaptation ou de réutilisation.</li>
+                <li>Produire une matière qui alimente la séquence finale sur le diagnostic partagé.</li>
+            </ul>
+
+            <h4>Organisation proposée</h4>
+            <p class="rubrique-title">7.1. Constitution des groupes</p>
+            <ul>
+                <li>4 à 5 groupes selon l’effectif.</li>
+                <li>Désignation d’un rapporteur par groupe.</li>
+                <li>Distribution d’une grille d’analyse commune.</li>
+            </ul>
+            
+            <p class="rubrique-title">7.2. Grille de travail</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                <div style="background: #fff; padding: 15px; border-left: 4px solid var(--red); box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--red); margin-top: 0; font-size: 16px;">Axe 1 — Ce que l’atelier fait émerger chez le jeune</h4>
+                    <ul>
+                        <li style="font-size: 14px;">Quelles dimensions de sa situation deviennent plus visibles ?</li>
+                        <li style="font-size: 14px;">Quelles ressources, compétences, besoins ou points d’appui apparaissent ?</li>
+                    </ul>
+                </div>
+                <div style="background: #fff; padding: 15px; border-left: 4px solid var(--turquoise); box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--turquoise); margin-top: 0; font-size: 16px;">Axe 2 — Ce que cela peut apporter à l’accompagnement</h4>
+                    <ul>
+                        <li style="font-size: 14px;">En quoi cela peut-il enrichir l’échange avec le jeune ?</li>
+                        <li style="font-size: 14px;">Quels éléments pourraient être réinvestis dans un entretien, un diagnostic ou une suite de parcours ?</li>
+                    </ul>
+                </div>
+                <div style="background: #fff; padding: 15px; border-left: 4px solid var(--yellow); box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--yellow); margin-top: 0; font-size: 16px;">Axe 3 — Liens avec les Life Skills</h4>
+                    <ul>
+                        <li style="font-size: 14px;">Quels axes sont mobilisés ?</li>
+                        <li style="font-size: 14px;">Quelles compétences de vie apparaissent ou peuvent être travaillées ?</li>
+                    </ul>
+                </div>
+                <div style="background: #fff; padding: 15px; border-left: 4px solid var(--mint); box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--mint); margin-top: 0; font-size: 16px;">Axe 4 — Vigilances et conditions de pertinence</h4>
+                    <ul>
+                        <li style="font-size: 14px;">Qu’est-ce qui doit rester souple ?</li>
+                        <li style="font-size: 14px;">Quelles adaptations sont nécessaires selon les jeunes ?</li>
+                        <li style="font-size: 14px;">Qu’est-ce qui pourrait être mal compris ou trop normé ?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="rubrique-title">Production attendue</p>
+            <p>Chaque groupe formalise une synthèse rapide en quatre rubriques :</p>
+            <table class="mag-table table-yellow">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Rubrique</th>
+                        <th>Contenu attendu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Apports pour le jeune</strong></td>
+                        <td>Ce qui est rendu visible ou mis en mouvement.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Apports pour l’accompagnement</strong></td>
+                        <td>Ce qui peut nourrir l’analyse ou le dialogue.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Liens avec les Life Skills</strong></td>
+                        <td>Les axes et compétences particulièrement mobilisés.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Vigilances</strong></td>
+                        <td>Conditions d’usage, limites, points d’attention.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">À l’issue de la séquence : les participants ont produit une première analyse croisée de l’atelier ; des points de convergence apparaissent ; le lien entre outil LS4YOU, accompagnement et diagnostic partagé commence à se structurer.</p>
+            </div>
+
+            <div class="col-2" style="margin-top: 40px;">
+                <div class="image-wrapper">
+                    <div class="img-bg-circle bg-turquoise" style="width: 270px; height: 270px; top: -10px; left: 10px;"></div>
+                    <img class="img-circle" src="https://images.stockcake.com/public/e/7/8/e789c6d9-9c08-475b-9e27-b9966bd0947c_large/collaborative-brainstorming-session-stockcake.jpg" alt="Analyse collective">
+                </div>
+                <div>
+                    <div class="sequence-header bg-turquoise">Séquence 8 — Restitution collective et mise en perspective</div>
+                    <h3>14h55 – 15h20</h3>
+                    <p><strong>Animation :</strong> Jérémy Authier / MLPB</p>
+                    
+                    <div class="objective-box" style="margin-top: 0;">
+                        <h4>Objectif général</h4>
+                        <p style="margin-bottom:0;">Capitaliser les retours des groupes, faire apparaître les convergences et préparer la dernière séquence de la journée consacrée au diagnostic partagé.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Donner à voir la diversité des analyses produites.</li>
+                <li>Identifier les enseignements récurrents.</li>
+                <li>Repérer les questions qui restent ouvertes.</li>
+                <li>Faire émerger les passerelles avec la réflexion sur le diagnostic partagé.</li>
+                <li>Préparer le changement d’échelle : de l’analyse d’un atelier à une perspective métier.</li>
+            </ul>
+
+            <h4>Déroulé proposé</h4>
+            <p class="rubrique-title" style="margin-top: 10px;">8.1. Restitutions flash des groupes</p>
+            <p>Chaque groupe partage :</p>
+            <ul>
+                <li>un apport principal ;</li>
+                <li>une vigilance majeure ;</li>
+                <li>une piste de réflexion pour la suite.</li>
+            </ul>
+
+            <p class="rubrique-title" style="margin-top: 10px;">8.2. Reformulation structurante par Jérémy Authier</p>
+            <p>Les retours sont regroupés autour de quelques catégories :</p>
+            <table class="mag-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Famille de retours</th>
+                        <th>Exemples de contenus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ce que l’atelier révèle du jeune</strong></td>
+                        <td>Ressources, besoins, confiance, projection, compétences invisibles.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ce qu’il soutient dans l’accompagnement</strong></td>
+                        <td>Dialogue, reformulation, personnalisation, appui à la décision.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ce qu’il peut nourrir dans le diagnostic</strong></td>
+                        <td>Auto-évaluation, lecture des ressources, compréhension plus qualitative.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ce qui reste à encadrer</strong></td>
+                        <td>Simplicité, non-standardisation, adaptation au contexte.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="rubrique-title">8.3. Transition vers la séquence finale</p>
+            <p>Formulation possible :<br>
+            <em>"Les analyses produites montrent que les Life Skills peuvent aider à rendre visibles des dimensions importantes du parcours du jeune. La question qui s’ouvre maintenant est celle de leur place possible dans une réflexion plus large sur le diagnostic partagé Mission Locale."</em></p>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">Les participants quittent cette séquence avec : une synthèse collective des apports de l’atelier ; une transition claire vers l’objet final de la journée : le diagnostic partagé.</p>
+            </div>
+
+        </div>
+
+        <div class="frieze">
+            <div class="bg-red"></div><div class="bg-turquoise"></div><div class="bg-yellow"></div><div class="bg-mint"></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 6 : Séquence 9 & Synthèse ================= -->
+    <div class="magazine-page">
+        <div class="floating-ring" style="width: 80px; height: 80px; border-color: var(--yellow); top: 100px; right: 100px;"></div>
+
+        <div class="content-layer">
+            <div class="sequence-header bg-red">Séquence 9 — Ouverture & perspectives</div>
+            <h2 style="margin-top: 10px;">Vers un diagnostic partagé Mission Locale enrichi par les Life Skills</h2>
+            <h3>15h20 – 16h00</h3>
+            <p><strong>Animation :</strong> Jérémy Authier / MLPB</p>
+
+            <div class="objective-box" style="background-color: rgba(194, 24, 59, 0.05); border-color: var(--red);">
+                <h4 style="color: var(--red);">Objectif général</h4>
+                <p style="margin-bottom:0;">Faire converger les apports de la journée vers une perspective métier : interroger ce que les Life Skills, l’auto-évaluation et la reconnaissance des ressources peuvent apporter à la construction d’un diagnostic partagé Mission Locale, pleinement inscrit dans l’accompagnement global.</p>
+                <p style="margin-bottom: 0; margin-top: 10px;">Cette séquence rejoint plusieurs fondamentaux nationaux : approche globale, jeunes acteurs de leur parcours, personnalisation de la relation et « tenir conseil ».</p>
+            </div>
+
+            <h4>Objectifs opérationnels</h4>
+            <ul>
+                <li>Revenir au sens d’un diagnostic réellement partagé.</li>
+                <li>Faire émerger les critères que les professionnels jugent essentiels.</li>
+                <li>Croiser ces critères avec les quatre axes Life Skills.</li>
+                <li>Identifier les composantes possibles d’un diagnostic enrichi.</li>
+                <li>Produire une première matière de travail capitalisable, sans figer un outil.</li>
+            </ul>
+
+            <h4>Déroulé détaillé</h4>
+            <p class="rubrique-title">9.1. Cadrage initial : relier la journée à la question du diagnostic partagé</p>
+            <p><strong>15h20 – 15h25</strong></p>
+            <p>Points à poser :</p>
+            <ul>
+                <li>Le diagnostic ne se limite pas à une collecte d’informations.</li>
+                <li>Il participe à la compréhension globale de la situation.</li>
+                <li>Il permet de construire avec le jeune des priorités et des suites d’accompagnement.</li>
+                <li>La journée a mis en évidence que les Life Skills peuvent contribuer à rendre visibles :
+                    <ul>
+                        <li>des ressources ;</li>
+                        <li>des capacités d’action ;</li>
+                        <li>des points d’appui ;</li>
+                        <li>une lecture plus subjective et plus partagée du parcours.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="rubrique-title">9.2. Faire émerger les critères d’un diagnostic réellement partagé</p>
+            <p><strong>15h25 – 15h35</strong></p>
+            <p><strong>Modalité :</strong><br>
+            Chaque participant complète la phrase :<br>
+            <em>Pour moi, un diagnostic partagé Mission Locale doit permettre de…</em><br>
+            Les réponses sont recueillies puis regroupées autour de grandes familles.</p>
+            <p><strong>Catégories susceptibles d’émerger :</strong></p>
+            <ul>
+                <li>comprendre la situation du jeune dans sa globalité ;</li>
+                <li>croiser la parole du jeune et le regard professionnel ;</li>
+                <li>identifier besoins, freins et ressources ;</li>
+                <li>éclairer les choix et la décision ;</li>
+                <li>construire des priorités réalistes ;</li>
+                <li>pouvoir être réinterrogé dans le temps.</li>
+            </ul>
+
+            <p class="rubrique-title">9.3. Croiser diagnostic partagé et Life Skills</p>
+            <p><strong>15h35 – 15h50</strong></p>
+            <p><strong>Organisation :</strong><br>
+            Travail en quatre groupes, chacun à partir d’un axe Life Skills :
+            <ul>
+                <li>Personnalité</li>
+                <li>Valorisation de soi</li>
+                <li>Bien-être physique et mental</li>
+                <li>Ressources matérielles et financières</li>
+            </ul>
+            </p>
+            
+            <p><strong>Grille de travail commune :</strong></p>
+            <table class="mag-table table-turquoise" style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Angle d’analyse</th>
+                        <th>Question posée</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ce que l’axe permet de mieux repérer</strong></td>
+                        <td>Quels éléments de la situation du jeune deviennent plus visibles ?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ce que le jeune peut exprimer (auto-évaluer)</strong></td>
+                        <td>Qu’est-ce qu’il peut mettre en mots lui-même ?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ce que cela interroge dans la posture pro</strong></td>
+                        <td>Quel type d’écoute, de questionnement ou de reformulation cela suppose-t-il ?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ce qui pourrait nourrir un outil métier</strong></td>
+                        <td>Quel repère, quelle rubrique ou quelle question serait utile sans rigidifier les pratiques ?</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="rubrique-title">9.4. Mise en commun : premières briques d’un diagnostic enrichi</p>
+            <p><strong>15h50 – 15h57</strong></p>
+            <p>Les restitutions permettent de faire apparaître une première architecture de travail.</p>
+            <table class="mag-table table-red" style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Dimension</th>
+                        <th>Contenu possible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Situation globale du jeune</strong></td>
+                        <td>Situation sociale, familiale, administrative, santé, logement, mobilité, ressources, environnement.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Projet et aspirations</strong></td>
+                        <td>Projet exprimé ou à clarifier, envies, pistes, cohérence avec les opportunités et le contexte.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Besoins, contraintes et conditions de faisabilité</strong></td>
+                        <td>Freins, besoins d’accompagnement, autonomie, accès aux droits, contraintes personnelles.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Ressources, compétences et capacités d’action</strong></td>
+                        <td>Expériences, compétences formelles et informelles, Life Skills mobilisées, appuis.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Lecture partagée et suites du parcours</strong></td>
+                        <td>Ce que le jeune reconnaît, ce que le professionnel repère, les écarts éventuels, les priorités et actions à engager.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="rubrique-title">9.5. Clôture et ouverture</p>
+            <p><strong>15h57 – 16h00</strong></p>
+            <p><strong>Message de conclusion possible :</strong><br>
+            La journée ne conclut pas sur un outil définitif. Elle permet de produire une première matière collective pour interroger ce que les Life Skills peuvent apporter à un diagnostic partagé Mission Locale : un diagnostic fidèle à l’accompagnement global, attentif à la parole du jeune et à ses ressources, utile à la construction de la suite du parcours.</p>
+            <p><strong>Ouverture :</strong></p>
+            <ul>
+                <li>Capitalisation des productions de la journée.</li>
+                <li>Possibilité de prolongement dans un groupe de travail.</li>
+                <li>Mise en lien avec les réflexions réseau autour de l’accompagnement et du diagnostic partagé.</li>
+            </ul>
+
+            <div class="effect-box">
+                <h4>Effet recherché</h4>
+                <p style="margin:0;">À l’issue de la journée, les participants ont contribué à :</p>
+                <ul>
+                    <li>relier LS4YOU aux fondamentaux de l’accompagnement en Mission Locale ;</li>
+                    <li>analyser une déclinaison concrète portée par la MLPB ;</li>
+                    <li>produire une première réflexion collective sur les conditions d’un diagnostic partagé enrichi par les Life Skills.</li>
+                </ul>
+            </div>
+
+        </div>
+        
+        <div class="frieze">
+            <div class="bg-turquoise"></div><div class="bg-mint"></div><div class="bg-yellow"></div><div class="bg-red"></div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7 : Tableau Synthétique Final ================= -->
+    <div class="magazine-page" style="min-height: auto;">
+        <div class="content-layer">
+            <h2 style="color: var(--text-dark); border-color: var(--yellow);">5. Tableau synthétique du programme actualisé</h2>
+            
+            <table class="mag-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Horaire</th>
+                        <th style="width: 25%;">Séquence</th>
+                        <th style="width: 20%;">Animation</th>
+                        <th>Intention pédagogique</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">10h00 – 10h20</td>
+                        <td><strong>Accueil, ouverture institutionnelle et cadrage de la journée</strong></td>
+                        <td>Direction MLPB / MLPB</td>
+                        <td>Situer la journée dans les fondamentaux de l’accompagnement et présenter le fil rouge.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">10h20 – 10h40</td>
+                        <td><strong>LS4YOU : cadre européen, partenariat et dissémination</strong></td>
+                        <td>Soha / Pistes Solidaires</td>
+                        <td>Resituer le projet européen, ses productions et le rôle du partenariat.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">10h40 – 12h15</td>
+                        <td><strong>Échange de pratiques : Life Skills, compétences invisibles et accompagnement global</strong></td>
+                        <td>Jérémy Authier</td>
+                        <td>Ouvrir une réflexion professionnelle sur les ressources, l’auto-évaluation et la posture d’accompagnement.</td>
+                    </tr>
+                    <tr style="background-color: rgba(255, 195, 0, 0.1);">
+                        <td style="color: var(--red); font-weight: 600;">12h15 – 13h30</td>
+                        <td style="color: var(--red); font-weight: 600;">Déjeuner sur place</td>
+                        <td>—</td>
+                        <td>Favoriser les échanges informels.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">13h30 – 13h45</td>
+                        <td><strong>Bascule vers la pratique</strong></td>
+                        <td>MLPB / Jérémy Authier</td>
+                        <td>Faire le lien entre les apports du matin et l’analyse de l’atelier de l’après-midi.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">13h45 – 14h20</td>
+                        <td><strong>Présentation de la déclinaison MLPB de LS4YOU</strong></td>
+                        <td>MLPB</td>
+                        <td>Montrer comment les productions LS4YOU ont été traduites dans un atelier de terrain.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">14h20 – 14h55</td>
+                        <td><strong>Analyse en sous-groupes</strong></td>
+                        <td>Participants / Appui MLPB</td>
+                        <td>Identifier les apports de l’atelier, ses liens avec les Life Skills et ses points de vigilance.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">14h55 – 15h20</td>
+                        <td><strong>Restitution collective et mise en perspective</strong></td>
+                        <td>Jérémy Authier / MLPB</td>
+                        <td>Capitaliser les retours et préparer la réflexion finale.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--turquoise); font-weight: 600;">15h20 – 16h00</td>
+                        <td><strong>Ouverture & perspectives : vers un diagnostic partagé Mission Locale enrichi par les Life Skills</strong></td>
+                        <td>Jérémy Authier / MLPB</td>
+                        <td>Faire émerger les premières briques d’un diagnostic partagé articulant accompagnement global, auto-évaluation et ressources du jeune.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="frieze">
+            <div class="bg-yellow"></div><div class="bg-red"></div><div class="bg-turquoise"></div><div class="bg-mint"></div>
+        </div>
+    </div>
+
+</body>
+</html>
